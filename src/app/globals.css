@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-medium tracking-tight;
+  }
+  ::selection {
+    background: #b84e0a;
+    color: #fff8ee;
+  }
+  :focus-visible {
+    outline: 2px solid #b84e0a;
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.28em] text-gold;
+  }
+  .section-pad {
+    @apply px-5 py-24 md:px-10 md:py-32;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  /* Buttons — squared, thin, editorial */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] transition-all duration-300;
+  }
+  .btn-solid {
+    @apply bg-mehndi text-ivory hover:bg-gold;
+  }
+  .btn-outline {
+    @apply border border-ink/30 text-ink hover:border-gold hover:text-gold;
+  }
+  .btn-light {
+    @apply bg-ivory text-mehndi hover:bg-gold hover:text-ivory;
+  }
+  .btn-outline-light {
+    @apply border border-ivory/40 text-ivory hover:border-gold-light hover:text-gold-light;
+  }
+
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-300;
+  }
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Editorial form fields */
+  .field {
+    @apply w-full border-0 border-b border-ink/30 bg-transparent px-0 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-gold;
+    border-radius: 0;
+  }
+  .field-label {
+    @apply mb-0.5 block text-[11px] font-medium uppercase tracking-[0.2em] text-ink-soft;
+  }
+}
